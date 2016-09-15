@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">practica1</string>
+    <string name="main_title">Practica 1</string>
+    <string name="main_description">Práctica realizada para la asignatura de <i>Servicios Móviles de la universidad de Jaén.</i></string>
 </resources>
