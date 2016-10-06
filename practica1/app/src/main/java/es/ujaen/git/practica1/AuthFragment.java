@@ -7,8 +7,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link AuthFragment.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the {@link AuthFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
 public class AuthFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,6 +30,8 @@ public class AuthFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mUser="";
     private String mPass="";
+
+    private EditText mEditUser=null;
 
 
     public AuthFragment() {
@@ -57,11 +71,23 @@ public class AuthFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View fragmento = inflater.inflate(R.layout.fragment_auth, container, false);
-        EditText user = (EditText)fragmento.findViewById(R.id.auth_edit_user);
+
+        mEditUser = (EditText)fragmento.findViewById(R.id.auth_edit_user);
         EditText pass = (EditText)fragmento.findViewById(R.id.auth_edit_pass);
 
-        user.setText(mUser);
+        mEditUser.setText(mUser);
         pass.setText(mPass);
+
+        Button boton = (Button)fragmento.findViewById(R.id.auth_button_send);
+
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nombre = mEditUser.getText().toString();
+                Autenticacion datos = new Autenticacion(nombre,null,null,0);
+                Toast.makeText(getActivity(), "Nombre "+datos.getUser(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return fragmento;
 
