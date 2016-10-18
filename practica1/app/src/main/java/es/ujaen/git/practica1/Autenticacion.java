@@ -37,4 +37,31 @@ public class Autenticacion{
         mUser=user;
     }
 
+    public String getPass(){
+        return mPass;
+    }
+
+    public void setPass(String pass){
+        mPass=pass;
+    }
+
+    public String getIP(){
+        return mIP;
+    }
+
+    public void setIP(String ip){
+        mIP=ip;
+    }
+
+    public int getPort(){
+        return mPort;
+    }
+
+    public void setPort(int port){
+        mPort=port;
+    }
+
+
+
+
 }

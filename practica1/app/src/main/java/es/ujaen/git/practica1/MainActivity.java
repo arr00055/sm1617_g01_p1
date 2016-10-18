@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity{
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        AuthFragment au = AuthFragment.newInstance("pepe","12345");
+        AuthFragment au = AuthFragment.newInstance("pepe","12345","1","2");
         ft.add(R.id.main_frame,au);
         ft.addToBackStack(null);
         ft.commit();
