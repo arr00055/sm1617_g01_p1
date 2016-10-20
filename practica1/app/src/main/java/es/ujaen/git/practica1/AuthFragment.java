@@ -98,18 +98,19 @@ public class AuthFragment extends Fragment {
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nombre = mEditUser.getText().toString();
+                String user   = mEditUser.getText().toString();
                 String pass   = mEditPass.getText().toString();
                 String ip     = mEditIP.getText().toString();
                 String port1  = mEditPort.getText().toString();
                 int port      = Integer.parseInt(port1);
-                Autenticacion datos = new Autenticacion(nombre,pass,ip,port);
+                Autenticacion datos = new Autenticacion(user,pass,ip,port);
                 Toast.makeText(getActivity(), "Nombre: "+datos.getUser(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(), "Contraseña: "+datos.getPass(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(), "IP: "+datos.getIP(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(), "Puerto: "+datos.getPort(), Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getActivity(), ConexActivity.class);
                 startActivity(i);
+                //Realizar un extend para cada uno de las variables que quiero pasar a la nueva actividad.
             }
         });
 
