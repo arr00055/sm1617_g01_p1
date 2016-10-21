@@ -21,7 +21,7 @@
         android:id="@+id/auth_edit_user"
         android:layout_alignTop="@+id/auth_label_user"
         android:layout_toEndOf="@+id/auth_label_ip"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:hint="@string/auth_hint_user" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:id="@+id/auth_edit_pass"
         android:layout_alignTop="@+id/auth_label_pass"
         android:layout_toEndOf="@+id/auth_label_ip"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:hint="@string/auth_hint_pass"
         android:inputType="textPassword" />
     <TextView
@@ -55,7 +55,7 @@
         android:id="@+id/auth_edit_ip"
         android:layout_alignTop="@+id/auth_label_ip"
         android:layout_toEndOf="@+id/auth_label_ip"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:hint="@string/auth_hint_ip" />
 
     <LinearLayout
@@ -77,8 +77,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/auth_edit_port"
-            android:layout_marginLeft="65dp"
-            android:hint="@string/ath_hint_port"
+            android:layout_marginStart="70dp"
+            android:hint="@string/auth_hint_port"
             android:inputType="number" />
     </LinearLayout>
 

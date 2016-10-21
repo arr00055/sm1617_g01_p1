@@ -104,13 +104,18 @@ public class AuthFragment extends Fragment {
                 String port1  = mEditPort.getText().toString();
                 int port      = Integer.parseInt(port1);
                 Autenticacion datos = new Autenticacion(user,pass,ip,port);
+
                 Toast.makeText(getActivity(), "Nombre: "+datos.getUser(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(), "Contraseña: "+datos.getPass(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(), "IP: "+datos.getIP(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(), "Puerto: "+datos.getPort(), Toast.LENGTH_SHORT).show();
+
                 Intent i = new Intent(getActivity(), ConexActivity.class);
+                i.putExtra("usuario",user);
+                i.putExtra("password",pass);
+                i.putExtra("direccionIp",ip);
+                i.putExtra("puerto",port);
                 startActivity(i);
-                //Realizar un extend para cada uno de las variables que quiero pasar a la nueva actividad.
             }
         });
 
