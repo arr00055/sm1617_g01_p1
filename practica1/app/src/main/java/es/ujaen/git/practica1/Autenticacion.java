@@ -1,24 +1,24 @@
 package es.ujaen.git.practica1;
 
-/**
- * Created by usuario on 29/09/2016.
+/**Esta clase se encarga de modelar los datos del usuario, aquí es donde se guardan los datos.
+ *
  */
 public class Autenticacion{
 
     public static final int SERVICE_PORT=6000;
 
 
-    protected String mUser="user";
+    protected String mUser="";
     protected String mPass="";
-    protected String mIP="127.0.0.1";
+    protected String mIP="";
     protected int    mPort=SERVICE_PORT;
 
     /**
-     *
-     * @param user
-     * @param pass
-     * @param ip
-     * @param port
+     *Constructor de la clase.
+     * @param user variable donde se guarda el nombre o nick del usuario.
+     * @param pass variable donde se guarda la contraseña del usuario.
+     * @param ip   variable donde se guarda la dirección Ip del usuario.
+     * @param port variable donde se guarda el puerto del usuario.
      */
     public Autenticacion(String user,String pass,String ip, int port){
 
@@ -28,11 +28,11 @@ public class Autenticacion{
         mPort=port;
 
     }
-
+//Métodos getUser para obtener al usuario, cuando se llama @return mUser.
     public String getUser(){
         return mUser;
     }
-
+//Método setUser se le introduce el usuario y asigna a la variable mUser el valor user.
     public void setUser(String user){
         mUser=user;
     }
