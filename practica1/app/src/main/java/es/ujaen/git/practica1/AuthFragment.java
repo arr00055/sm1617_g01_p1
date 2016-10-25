@@ -64,6 +64,7 @@ public class AuthFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState == null)
         if (getArguments() != null) { //Compruebo que la instancia de fragment AuthFragment no está vacía.
             mUser = getArguments().getString(ARG_PARAM1); //Obtengo cada una de las cadenas de args.
             mPass = getArguments().getString(ARG_PARAM2);
@@ -75,6 +76,9 @@ public class AuthFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if(savedInstanceState != null){ //Si el estado es diferente de null, es decir cambia el estado del fragmento.
+            Toast.makeText(getActivity(),"Cambio de Configuración",Toast.LENGTH_SHORT).show();
+        }//Fin if comprobación cambio de estado del fragmento.
 
         // Inflate el layout de este fragmento.
         View fragmento = inflater.inflate(R.layout.fragment_auth, container, false);
@@ -118,10 +122,5 @@ public class AuthFragment extends Fragment {
         return fragmento;
 
     }//Fin del createView.
-
-
-
-
-
 
 }//Fin clase AuthFragment.
