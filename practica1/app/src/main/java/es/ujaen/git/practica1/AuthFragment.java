@@ -10,80 +10,78 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
-
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link *AuthFragment.*OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link AuthFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Subclase de Fragment.
+ * @param *ARG_PARAM1 primer  parámetro.
+ * @param *ARG_PARAM2 segundo parámetro.
+ * @param *ARG_PARAM3 tercer  parámetro.
+ * @param *ARG_PARAM4 cuarto  parámetro.
+ *
  */
 public class AuthFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    // El fragmento inicializa los parámetros.
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private static final String ARG_PARAM3 = "param3";
     private static final String ARG_PARAM4 = "param4";
 
-    // TODO: Rename and change types of parameters
+    //Renombrar y cambiar los tipos de los parámetros.
     private String mUser="";
     private String mPass="";
     private String mIP="";
     private String mPort="";
 
+    //Se inicializan los editables.
     private EditText mEditUser=null;
     private EditText mEditPass=null;
     private EditText mEditIP=null;
     private EditText mEditPort=null;
 
+    //Constructor requerido por el fragmento.
     public AuthFragment() {
-        // Required empty public constructor
+
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param *param1 Parameter 1.
-     * @param *param2 Parameter 2.
-     * @return A new instance of fragment AuthFragment.
+     * Se usa este método para crear una nueva instancia del fragmento usando los parámetros entregados.
+     * @param *param1 user.
+     * @param *param2 pass.
+     * @param *param3 ip.
+     * @param *param4 port.
+     * @return una nueva instancia de fragment AuthFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static AuthFragment newInstance(String user, String pass, String ip, String port) {
         AuthFragment fragment = new AuthFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, user);
-        args.putString(ARG_PARAM2, pass);
+        Bundle args = new Bundle();                 //Creamos args de tipo Bundle como nuevo Bundle.
+        args.putString(ARG_PARAM1, user);           //Guardamos en args una cadena con los parámetros
+        args.putString(ARG_PARAM2, pass);           //que colocamos como una cadena string.
         args.putString(ARG_PARAM3, ip);
         args.putString(ARG_PARAM4, port);
-        fragment.setArguments(args);
+        fragment.setArguments(args);                //Guardamos el bundle args con las cadenas en fragment.
         return fragment;
-    }
+    }//Fin nueva instancia.
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mUser = getArguments().getString(ARG_PARAM1);
+        if (getArguments() != null) { //Compruebo que la instancia de fragment AuthFragment no está vacía.
+            mUser = getArguments().getString(ARG_PARAM1); //Obtengo cada una de las cadenas de args.
             mPass = getArguments().getString(ARG_PARAM2);
             mIP   = getArguments().getString(ARG_PARAM3);
             mPort = getArguments().getString(ARG_PARAM4);
-        }
-    }
+        }//Fin If.
+    }//Fin de OnCreate.
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
+        // Inflate el layout de este fragmento.
         View fragmento = inflater.inflate(R.layout.fragment_auth, container, false);
 
-        mEditUser = (EditText)fragmento.findViewById(R.id.auth_edit_user);
-        mEditPass = (EditText)fragmento.findViewById(R.id.auth_edit_pass);
-        mEditIP   = (EditText)fragmento.findViewById(R.id.auth_edit_ip);
+        mEditUser = (EditText)fragmento.findViewById(R.id.auth_edit_user); //Busco cada EditText por su id en el layout y
+        mEditPass = (EditText)fragmento.findViewById(R.id.auth_edit_pass); //los guardo en las variables tipo editables que
+        mEditIP   = (EditText)fragmento.findViewById(R.id.auth_edit_ip);   //he inicializado arriba.
         mEditPort = (EditText)fragmento.findViewById(R.id.auth_edit_port);
 
         mEditUser.setText(mUser);
@@ -91,39 +89,39 @@ public class AuthFragment extends Fragment {
         mEditIP.setText(mIP);
         mEditPort.setText(mPort);
 
-        Button boton = (Button)fragmento.findViewById(R.id.auth_button_send);
+        Button boton = (Button)fragmento.findViewById(R.id.auth_button_send); //Busco el botón por su Id y los formateo.
 
-        boton.setOnClickListener(new View.OnClickListener() {
+        boton.setOnClickListener(new View.OnClickListener() {  //Como estoy en el fragment estoy atento al evento click de este.
             @Override
-            public void onClick(View v) {
-                String user   = mEditUser.getText().toString();
-                String pass   = mEditPass.getText().toString();
-                String ip     = mEditIP.getText().toString();
-                String port1  = mEditPort.getText().toString();
-                int port      = Integer.parseInt(port1);
-                Autenticacion datos = new Autenticacion(user,pass,ip,port);
-
+            public void onClick(View v) { //Cuando pulso el botón.
+                String user   = mEditUser.getText().toString(); //Convierto el editable de EditUser en un string user.
+                String pass   = mEditPass.getText().toString(); //Convierto el editable de EditUser en un string pass.
+                String ip     = mEditIP.getText().toString();   //Convierto el editable de EditUser en un string ip.
+                String port1  = mEditPort.getText().toString(); //Convierto el editable de EditUser en un string port1
+                int port      = Integer.parseInt(port1);        //Paso de un string port1 a un entero port.
+                Autenticacion datos = new Autenticacion(user,pass,ip,port);//Introduzco las variables en la clase Autenticacion al instanciarla.
+                //Muestro unos mensajes para comprobar que funciona.
                 Toast.makeText(getActivity(), "Nombre: "+datos.getUser(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(), "Contraseña: "+datos.getPass(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(), "IP: "+datos.getIP(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(), "Puerto: "+datos.getPort(), Toast.LENGTH_SHORT).show();
-
-                Intent i = new Intent(getActivity(), ConexActivity.class);
-                i.putExtra("usuario",user);
-                i.putExtra("password",pass);
-                i.putExtra("direccionIp",ip);
-                i.putExtra("puerto",port);
-                startActivity(i);
-            }
-        });
+                //Utilizo un intent para realizar transición de fragmento a Actividad pasando los datos para ello.
+                Intent i = new Intent(getActivity(), ConexActivity.class);//Tomo el fragmento actual, la actividad a la que quiero ir.
+                i.putExtra("usuario",user);//paso el valor de user con id usuario.
+                i.putExtra("password",pass);//paso el valor de pass con id password.
+                i.putExtra("direccionIp",ip);//paso el valor de ip con id direccionIp.
+                i.putExtra("puerto",port);//paso el valor de port con id puerto.
+                startActivity(i);//Realizar la transición intent con identificador i.
+            }//Fin del método click.
+        });//Fin de la escucha del evento click.
 
         return fragmento;
 
-    }
+    }//Fin del createView.
 
 
 
 
 
 
-}
+}//Fin clase AuthFragment.
