@@ -3,13 +3,15 @@ package es.ujaen.git.practica1;
  * que se contiene el fragmento dinámico.
  */
 //Importamos los paquetes de compatibilidad para poder hacer uso de la clase Fragment y sus métodos.
+import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 //La clase MainActivity hereda de AppCompatActivity.
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 //Ciclo de vida onCreate cuando se crea la Actividad. Aquí es donde se inicializa la actividad.
 //En Bundle savedInstanceState es donde se reciben los datos almacenados tras un recreado de la actividad.
     @Override
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity{
             ft.addToBackStack(null);
         }//Fin del if.
         ft.commit();//Se Confirman los cambios.
+
     }//Fin del onCreate.
 
 

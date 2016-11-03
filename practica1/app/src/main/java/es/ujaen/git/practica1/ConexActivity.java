@@ -7,9 +7,13 @@ package es.ujaen.git.practica1;
  * @param puerto      el puerto que introduce el usuario en la interfaz.
  */
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity; //Importamos este paquete para la compatibilidad con API inferiores.
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 
 //La clase ConexActivity hereda de AppCompatActivity.
 public class ConexActivity extends AppCompatActivity {
@@ -34,4 +38,19 @@ public class ConexActivity extends AppCompatActivity {
             //Toast.makeText(this, "Puerto: "+port, Toast.LENGTH_SHORT).show();
         }//Fin del if.
     }//Fin del onCreate.
+
+    //Creo una clase conectar que con los datos que el usuario ha introducido en el fragmento y enviado durante el login, y a través de una
+    //tarea asíncrona y con el uso de Sockets TCP me permitirá conectar con un servidor y recibir una respuesta de este.
+    //TODO seguir con ejemplo 9.
+    public class conectar extends AsyncTask<InetSocketAddress, Void, String> {
+        @Override
+        protected String doInBackground(InetSocketAddress... arg0){
+            Socket cliente = null;//Creo e inicializo una variable cliente de tipo Socket.
+            String respuesta=null;//Creo e inicializo una variable respuesta que será la que obtenga del servidor de tipo Socket.
+
+            return respuesta;
+        }
+    }
+
+
 }//Fin del ConexActivity.
