@@ -6,40 +6,23 @@ import java.net.*;
 /**Created on 13/11/2016.
  * @author Alejandro Romo Rivero.
  */
-
+//Creación de la clase abstracta servicio por medio del abstract.
 public abstract class servicio {
-    final int PUERTO=6000;             //Puerto en el que estará escuchando nuestro servidor TCP por conexiones.
-    ServerSocket Servidorsocket;       //Variable Servidorsocket de tipo ServerSocket.
-    Socket so;                         //Variable so de tipo Socket.
-    DataOutputStream salida;           //Variable salida que será del flujo de salida de datos.
-    String mensajeRecibido;            //Cadena para mensajerecibido
+    static ServerSocket mServidor = null; //Se inicializa la variable del mServidor del tipo ServerSocket.
+    public static int mConexiones = 0;    //Se inicializa la variable Conexiones de tipo entero, para el número de conexiones.
+    final int PUERTO=6000;                //Puerto en el que estará escuchando nuestro servidor TCP por conexiones.
+    ServerSocket mServersocket;           //Variable mServersocket de tipo ServerSocket.
+    Socket mSocket;                       //Variable mSocket tipo Socket.
+    String inputData = null;              //Cadena para los datos de entrada.
+    String outputData = "";               //Cadena para los datos de salida.
+    String comando = "";                  //Cadena para los comandos.
+    String parametro = "";                //Cadena para los parámetros.
+    String tempUser = "";                 //Cadena para la temporización del usuario.
 
-    //Arrancaserv será el método que arranca el servidor.
-    public void Arrancaserv()
-    {
-        BufferedReader entrada; //Variable para el flujo de datos de entrada.
-        try {
-            Servidorsocket = new ServerSocket(PUERTO);// Crea socket servidor que escuchara en puerto 6000.
-            so=new Socket();
-            System.out.println("Esperando una conexión:");
-            so = Servidorsocket.accept();
-            //Inicia el socket, ahora esta esperando una conexión por parte del cliente
-            System.out.println("Un cliente se ha conectado.");
-            //Canales de entrada y salida de datos
-            entrada = new BufferedReader(new InputStreamReader(so.getInputStream()));
-            salida = new DataOutputStream(so.getOutputStream());
-            System.out.println("Confirmando conexion al cliente....");
-            salida.writeUTF("Conexión exitosa...n envia un mensaje :D");
-            //Recepcion de mensaje
-            mensajeRecibido = entrada.readLine();
-            System.out.println(mensajeRecibido);
-            salida.writeUTF("Se recibio tu mensaje.n Terminando conexion...");
-            salida.writeUTF("Gracias por conectarte, adios!");
-            System.out.println("Cerrando conexión...");
-            Servidorsocket.close();//Se cierra la conexión con el servidor.
-        }catch(Exception e )//Fin del try, Coge la excepción de error del servidor.
-        {//Inicio del catch.
-            System.out.println("Error: "+e.getMessage());//Lanza el error.
-        }//Fin del catch.
-    }//Fin del método Arrancaserv
+    abstract void main(String[] args);    //Método principal.
+    abstract public void Autentica();     //Método para la autenticación del usuario.
+    abstract public void run();           //Método para arrancar el servidor.
+    abstract public void close();         //Método para cerrar el servidor.
+    abstract public void peticion();      //Método para recibir la petición del usuario.
+
 }//Fin clase abstracta servicio.
