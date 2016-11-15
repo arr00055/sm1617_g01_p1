@@ -20,11 +20,11 @@ public abstract class servicio {
     String tempUser = "";                 //Cadena para la temporización del usuario.
 
     abstract void main(String[] args);                           //Método principal.
+
     abstract public Boolean Login(String user,String pass);      //Método para la autenticación del usuario. Me devuelve un Boolean
                                                                  //para comprobar si el usuario ha podido autentincarse correctamente.
     abstract public String close();                              //Método para cerrar la conexión con el cliente, me devolverá una
                                                                  //cadena para avisar al cliente de que se ha desconectado.
-    abstract public String peticion(String inputData);           //Método para recibir la petición del usuario, lo hará a través del
-                                                                 //flujo de entrada de datos y devolverá una cadena para avisar al
-                                                                 //cliente de que su petición ha sido realizada.
+    abstract public String peticion();                           //Método para recibir la petición del usuario, se sacará la información
+                                                                 //del mensaje del protocolo.
 }//Fin clase abstracta servicio.
